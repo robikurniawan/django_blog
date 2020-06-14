@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    Update
+{% endblock page_title %}
+
+{% block contents %}
+    <div class="mt-5"></div>
+    <h2>Update Articles</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.judul.id_for_label }}">{{ form.judul.label }}</label>
+            <input type="text" class="form-control" name="{{ form.judul.name }}" value="{{ artikel.judul }}"
+                   id="{{ form.judul.id_for_label }}" autocomplete="off" required>
+        </div>
+        <div class="form-group">
+            <label for="{{ form.isi.id_for_isi }}"> {{ form.isi.label }} </label>
+            <textarea class="form-control" id="{{ form.isi.id_for_isi }}"
+                      name="{{ form.isi.name }}"> {{ artikel.isi }} </textarea>
+        </div>
+        <div class="form-group">
+            <label for="{{ form.kategori.id_for_label }}">{{ form.kategori.label }}</label>
+            <input type="text" class="form-control" name="{{ form.kategori.name }}"
+                   id="{{ form.kategori.id_for_label }}" value="{{ artikel.kategori }}" required>
+        </div>
+        <div class="form-group">
+            <label for="{{ form.gambar.id_for_label }}">{{ form.gambar.label }} :   </label>
+            <input type="file" class="form-control" name="{{ form.gambar.name }}" id="{{ form.gambar.id_for_label }}"
+                   required>
+        </div>
+
+        <img src="{{ artikel.gambar.url }}" alt="{{ artikel.gambar.name }}" width="200px">
+
+
+        <hr>
+        <button class="btn btn-primary" type="submit"> Update</button>
+    </form>
+    <!-- </div> -->
+
+{% endblock contents %}

@@ -1,0 +1,49 @@
+
+{% load static %}
+
+   <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
+        <div class="container">
+            <a class="navbar-brand" href="#">robikurniawan.com </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href=" {% url 'home' %} ">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href=" {% url 'artikel:list' %}  ">Artikel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                </ul>
+                {% if user.is_authenticated %}
+
+                <div class="nav-item dropdown ml-auto ">
+                    <a class="nav-link dropdown-toggle text-light " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ user }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{% url 'artikel:create' %}">Tambah Artikel </a>
+                        <a class="dropdown-item" href="{% url 'artikel:manage' %}">Manage Artikel </a>
+                        <a class="dropdown-item" href="{% url 'login:logout'  %}  "> Keluar  </a>
+                    </div>
+                </div>
+                {% else %}
+
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login:login'  %} ">Masuk  </a>
+                    </li>
+                </ul>
+
+                {% endif %}
+            
+            </div>
+        </div>
+    </nav>
+</header>
+

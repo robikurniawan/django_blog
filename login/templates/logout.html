@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block page_title %}
+  Logout
+{% endblock page_title %}
+
+{% block contents %}
+  <div class="row mt-5">
+      <p>Anda yakin ingin keluar ? </p> <br>
+      <hr>
+      <form method="POST">
+          {% csrf_token %}
+          <input type="submit" name="logout"  class="btn btn-danger"  >  
+          <a href="{% url 'home' %}"   class="btn btn-outline-primary"> Batal </a>
+      </form>
+  </div>
+{% endblock contents %}

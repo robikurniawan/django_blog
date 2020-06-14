@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+  Create
+{% endblock page_title %}
+
+{% block contents %}
+  <div class="mt-5"></div>
+  <!-- <div class="row"> -->
+    <h2>Create Articles</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="{{ form.judul.id_for_label }}">{{ form.judul.label }}</label>
+        <input type="text" class="form-control" name="{{ form.judul.name }}" id="{{ form.judul.id_for_label }}" autocomplete="off"  required> 
+      </div>
+      <div class="form-group">
+        <label for="{{ form.isi.id_for_isi }}"> {{ form.isi.label }} </label>
+          <label for="{{ form.isi.id_for_label }}"> </label>
+          <textarea class="form-control" id="{{ form.isi.id_for_label }}" name="{{ form.isi.name }}"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="{{ form.kategori.id_for_label }}">{{ form.kategori.label }}</label>
+        <input type="text" class="form-control" name="{{ form.kategori.name }}" id="{{ form.kategori.id_for_label }}" required> 
+      </div>
+      <div class="form-group">
+        <label for="{{ form.gambar.id_for_label }}">{{ form.gambar.label }}</label>
+        <input type="file" class="form-control" name="{{ form.gambar.name }}" id="{{ form.gambar.id_for_label }}" >
+      </div>
+
+      <hr>
+      <button class="btn btn-primary" type="submit"> Simpan </button>
+    </form>    
+  <!-- </div> -->
+  
+{% endblock contents %}

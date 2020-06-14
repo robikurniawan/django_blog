@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+Manage
+{% endblock page_title %}
+
+{% block contents %}
+<div class="mt-5"></div>
+<h2>Manage</h2>
+
+{% if messages %}
+  {% for message in messages %}
+          <div class="alert {% if message.tags %}alert-{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}danger{% else %}{{ message.tags }}{% endif %}{% endif %}" role="alert">{{ message }}</div>
+  {% endfor %}
+{% endif %}
+
+
+
+<a href="{% url 'artikel:create' %}" class="btn btn-primary mt-3 mb-3"> Tambah </a>
+<table class="table table-hover">
+  <tr>
+    <th>No.</th>
+    <th>Category</th>
+    <th>Title</th>
+    <th>Published</th>
+    <th>Action</th>
+  </tr>
+  {% for value in artikel %}
+  <tr>
+    <td> {{ forloop.counter }} </td>
+    <td> {{ value.kategori }} </td>
+    <td> {{ value.judul }} </td>
+    <td> {{ value.published }}</td>
+    <td>
+      <a href="{% url 'artikel:update' value.id  %}" class="btn btn-sm btn-warning"> Edit </a>
+      <a class="btn btn-sm btn-danger" href="{% url 'artikel:delete' value.id  %}">Delete</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock contents %}

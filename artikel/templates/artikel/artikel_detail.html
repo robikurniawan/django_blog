@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+  {{ artikel.judul }}
+{% endblock page_title %} 
+
+{% block contents %}
+    <div class="mt-5"></div>
+    <h1>{{ artikel.judul }}</h1>
+    <h6>{{ artikel.published }}</h6>
+    <hr>
+    <img src="{{ artikel.gambar.url }}" alt="" width="100%" class="rounded-lg">
+    <p>{{ artikel.isi }}</p>
+{% endblock contents %} 

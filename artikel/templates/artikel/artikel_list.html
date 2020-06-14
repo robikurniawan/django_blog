@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block page_title %}
+  Artikel
+{% endblock page_title %}
+
+{% block contents %}
+
+<h2 class="mt-4 mb-4">Artikel</h2>
+<div class="row">
+  <div class="col-md-10">
+    <div class="row">
+      {% for artikel in artikels  %}
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="{{ artikel.gambar.url }}" width="100%" alt="" class="img-rounded" style="object-fit: cover; height: 200px;">
+            <div class="card-body">
+              <small>{{ artikel.kategori }}</small>
+              <h5 class="card-title"><a href="{% url 'artikel:detail' artikel.slug %}"> {{ artikel.judul }} </a></h5>
+              <small>{{ artikel.published }}</small>
+              <hr>
+              <small class="card-text">
+                  {{ artikel.isi|truncatewords:30 }}
+                  <a href="{% url 'artikel:detail' artikel.slug %}"> Selengkapnya </a>
+              </small>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+  </div>
+</div>
+  <div class="col-md-2">
+    <h3>Kategori </h3> 
+    <ul class="list-group">
+    
+      {% for kategori in kategori_list %}
+      <li class="list-group-item "> <h5> <span class="badge badge-warning"> {{ kategori }} </span> </h5> </li>
+      {% endfor %}
+    </ul>
+ 
+  </div>
+
+</div>
+
+{% endblock contents %}
+
+
+
